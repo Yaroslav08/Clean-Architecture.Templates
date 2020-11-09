@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Classroom.Constants.WebApiResponses;
 using CleanArchitecture.Application.Interfaces;
+using CleanArchitecture.Constants;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 namespace CleanArchitecture.WebApi.Controllers
@@ -19,12 +20,12 @@ namespace CleanArchitecture.WebApi.Controllers
             userService = _userService;
         }
         
-        [HttpGet("api/users/{Id?}")]
-        public async Task<IActionResult> GetUser(int? Id)
+        [HttpGet(ApiRoutes.Users.Get)]
+        public async Task<IActionResult> GetUser(int userId)
         {
-            if (Id == null)
+            if (userId == default)
                 return BadRequest(new APIBadRequestResponse(Constants.Constants.NotFound));
-            return Ok(new APIOKResponse(await userService.GetUserById(Convert.ToInt32(Id))));
+            return Ok(new APIOKResponse(await userService.GetUserById(Convert.ToInt32(userId))));
         }
     }
 }
