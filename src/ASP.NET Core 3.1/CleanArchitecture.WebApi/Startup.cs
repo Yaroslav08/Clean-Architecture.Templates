@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace CleanArchitecture.WebApi
 {
@@ -29,6 +30,10 @@ namespace CleanArchitecture.WebApi
             services.RegisterServices();
             services.AddCustomAutoMapper();
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Web Api", Version = "v1" });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -36,6 +41,8 @@ namespace CleanArchitecture.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Web Api v1"));
             }
             app.UseMiddleware<AuthMiddleware>();
             app.UseHttpsRedirection();
