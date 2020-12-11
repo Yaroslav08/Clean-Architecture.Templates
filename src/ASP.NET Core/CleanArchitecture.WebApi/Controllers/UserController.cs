@@ -27,5 +27,11 @@ namespace CleanArchitecture.WebApi.Controllers
                 return BadRequest(new APIBadRequestResponse(Constants.Constants.NotFound));
             return Ok(new APIOKResponse(await userService.GetUserById(Convert.ToInt32(userId))));
         }
+
+        [HttpGet(ApiRoutes.Users.GetAll)]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            return Ok(new APIOKResponse(await userService.GetAll()));
+        }
     }
 }
