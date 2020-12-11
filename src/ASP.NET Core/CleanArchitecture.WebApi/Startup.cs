@@ -29,7 +29,8 @@ namespace CleanArchitecture.WebApi
         {
             services.RegisterServices();
             services.AddCustomAutoMapper();
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(option => option.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Web Api", Version = "v1" });
