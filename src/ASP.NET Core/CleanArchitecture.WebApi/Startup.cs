@@ -55,6 +55,11 @@ namespace CleanArchitecture.WebApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapGet("/", opt =>
+                {
+                    opt.Response.Redirect(Constants.ApiRoutes.Users.GetAll);
+                    return Task.CompletedTask;
+                });
             });
         }
     }
