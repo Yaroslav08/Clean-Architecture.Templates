@@ -21,8 +21,8 @@ First of all you can rename Context and/or changed connection string
 ![image](https://user-images.githubusercontent.com/38474523/101915117-dacaf280-3bcd-11eb-9d7f-c50029969e25.png)
 After configuration Context we must create migration in PMC (select Shop.Infrastructure.Data project)
 ![image](https://user-images.githubusercontent.com/38474523/101915652-92f89b00-3bce-11eb-85b1-9e6bb609f857.png)
+
+# Last step
 All done, the project configuration is complete, let's try to run it!  
-
-
 Great, it works!  
 ![image](https://user-images.githubusercontent.com/38474523/101916195-48c3e980-3bcf-11eb-8343-87b3a70334df.png)
