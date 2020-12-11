@@ -25,7 +25,10 @@ namespace CleanArchitecture.WebApi.Controllers
         {
             if (userId == default)
                 return BadRequest(new APIBadRequestResponse(Constants.Constants.NotFound));
-            return Ok(new APIOKResponse(await userService.GetUserById(Convert.ToInt32(userId))));
+            var user = await userService.GetUserById(Convert.ToInt32(userId));
+            if (user == null)
+                return NotFound(new APINotFoundResponse(Constants.Constants.NotFound));
+            return Ok(new APIOKResponse(user));
         }
 
         [HttpGet(ApiRoutes.Users.GetAll)]
