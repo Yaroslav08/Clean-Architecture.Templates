@@ -9,5 +9,6 @@ namespace CleanArchitecture.Application.Interfaces
     public interface IUserService
     {
         Task<UserViewModel> GetUserById(int id);
+        Task<List<UserViewModel>> GetAll();
     }
 }

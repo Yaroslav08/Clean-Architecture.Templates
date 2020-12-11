@@ -23,5 +23,10 @@ namespace CleanArchitecture.Application.Services
         {
             return mapper.Map<UserViewModel>(await unitOfWork.UserRepository.GetByWhereAsync(d => d.Id == id));
         }
+
+        public async Task<List<UserViewModel>> GetAll()
+        {
+            return mapper.Map<List<UserViewModel>>(await unitOfWork.UserRepository.GetAllAsync());
+        }
     }
 }
